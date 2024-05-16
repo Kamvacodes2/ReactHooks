@@ -4,6 +4,8 @@ import React, { useReducer} from 'react';
 // import { UserContext } from './index'; useContext
 // import Button from 'react-bootstrap/Button'
 import ToDoList from './ToDoList';
+import { v4 as uuidv4 } from 'uuid';
+
 
 export const TodosContext = React.createContext();
 
@@ -16,6 +18,21 @@ const todoInitialState = {
 
 function todosReducer(state, action) {
   switch(action.type) {
+    case 'delete':
+      const filteredTodoState = state.todos.filter(todo => todo.id !== action.payload.id)
+      return {...state, todos: filteredTodoState}
+    
+    case 'add':
+      const newToDo = {id: uuidv4(), text: action.payload}
+      //add new to do on to array
+      const addedToDos = [...state.todos, newToDo]
+      return {...state, todos: addedToDos}
+    
+    case 'edit': 
+      const updatedToDo = {...action.payload}
+      const updatedToDoIndex = state.todos.findIndex(t => t.id === action.payload.id)
+      const updatedToDos = [...state.todos.slice(0, updatedToDoIndex), updatedToDo, ...state.todos.slice(updatedToDoIndex + 1)];
+      return {...state, todos:updatedToDos}
     default:
       return todoInitialState
   }
