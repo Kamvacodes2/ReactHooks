@@ -1,0 +1,20 @@
+{
+  "todos": [
+    {
+      "id": "1",
+      "text": "finishing writing hooks chapter"
+    },
+    {
+      "id": "3",
+      "text": "read bible"
+    },
+    {
+      "id": "973b24b7-efc4-4f8a-a388-d70ed6c534e6",
+      "text": "Train to build muscle"
+    },
+    {
+      "id": "d91a949b-dd09-4099-9bd5-9164e780a0ba",
+      "text": "Eat protein and carbs"
+    }
+  ]
+}
